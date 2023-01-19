@@ -1,15 +1,32 @@
 * {
-  background-color: #333;
-  padding: 5px;
-  margin: 0;
   box-sizing: border-box;
-  border: 1px solid white;
+  padding: 0px;
+  margin: 0;
   font-family: "VT323", monospace;
   font-size: 2rem;
 }
 
+body {
+  background-color: #333;
+  border: 1px solid white;
+}
+
+button {
+  display: block;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  margin: 5 px auto;
+}
+
 .display {
   padding: 0px;
+  margin: 10px;
   font-size: 2rem;
   text-align: right;
   border-width: 1px;
@@ -29,4 +46,9 @@
 ::placeholder {
   color: rgb(110, 110, 110);
   opacity: 1;
+}
+
+.numbers button {
+  padding: 0.5rem 1rem;
+  margin: 5px;
 }
