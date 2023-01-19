@@ -14,6 +14,7 @@ button {
   display: block;
   height: 3rem;
   width: 3rem;
+  background-color: #ffffe0;
 }
 
 .flex {
@@ -54,10 +55,10 @@ button {
   opacity: 1;
 }
 
-.numbers button {
-  background-color: #ffffe0;
-}
-
 .operators button {
   background-color: #8d8d68;
+}
+
+.operator {
+  background-color: #8d8d68 !important;
 }
