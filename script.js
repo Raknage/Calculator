@@ -52,3 +52,7 @@ document.querySelector("#clr").addEventListener("click", () => {
   operator = null;
   display.value = "";
 });
+
+document.querySelector("#sum").addEventListener("click", (e) => {
+  operator = e.target.innerText;
+});
