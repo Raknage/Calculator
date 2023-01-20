@@ -21,7 +21,7 @@ function operate(operator, x, y) {
   operator(x, y);
 }
 
-function updateDisplay(button) {
-  inputArray.push(button);
-  display.value = button;
+function updateDisplay(value) {
+  inputArray.push(value);
+  display.value = value;
 }
