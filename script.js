@@ -4,9 +4,9 @@ let x = null;
 let y = null;
 let operator = null;
 
-function add(x, y) {
+const add = function (x, y) {
   return x + y;
-}
+};
 
 function sub(x, y) {
   return x - y;
@@ -21,7 +21,7 @@ function div(x, y) {
 }
 
 function operate(operator, x, y) {
-  operator(x, y);
+  return operator(x, y);
 }
 
 function updateDisplay(value) {
@@ -54,5 +54,9 @@ document.querySelector("#clr").addEventListener("click", () => {
 });
 
 document.querySelector("#sum").addEventListener("click", (e) => {
-  operator = e.target.innerText;
+  operator = add;
+});
+
+document.querySelector("#equal").addEventListener("click", () => {
+  display.value = operate(operator, x, y);
 });
