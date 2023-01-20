@@ -44,3 +44,11 @@ numArray.forEach((e) => {
     updateDisplay(e.target.innerText);
   });
 });
+
+document.querySelector("#clr").addEventListener("click", () => {
+  newValue = null;
+  x = null;
+  y = null;
+  operator = null;
+  display.value = "";
+});
