@@ -58,6 +58,18 @@ document.querySelector("#sum").addEventListener("click", (e) => {
   operator = add;
 });
 
+document.querySelector("#sub").addEventListener("click", (e) => {
+  operator = sub;
+});
+
+document.querySelector("#mul").addEventListener("click", (e) => {
+  operator = mul;
+});
+
+document.querySelector("#div").addEventListener("click", (e) => {
+  operator = div;
+});
+
 document.querySelector("#equal").addEventListener("click", () => {
   const result = operate(operator, x, y);
   display.value = result;
