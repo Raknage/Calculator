@@ -5,11 +5,11 @@ let y = null;
 let operator = null;
 
 const add = function (x, y) {
-  return x + y;
+  return +x + +y;
 };
 
 function sub(x, y) {
-  return x - y;
+  return +x - +y;
 }
 
 function mul(x, y) {
@@ -25,9 +25,9 @@ function operate(operator, x, y) {
 }
 
 function updateDisplay(value) {
+  display.value = "";
   newValue = display.value + value;
   display.value = newValue;
-  updateNumbers(newValue);
 }
 
 function updateNumbers(n) {
@@ -42,6 +42,7 @@ const numArray = document.querySelectorAll(".num");
 numArray.forEach((e) => {
   e.addEventListener("click", (e) => {
     updateDisplay(e.target.innerText);
+    updateNumbers(e.target.innerText);
   });
 });
 
@@ -58,5 +59,9 @@ document.querySelector("#sum").addEventListener("click", (e) => {
 });
 
 document.querySelector("#equal").addEventListener("click", () => {
-  display.value = operate(operator, x, y);
+  const result = operate(operator, x, y);
+  display.value = result;
+  x = result;
+  y = null;
+  operator = null;
 });
