@@ -1,7 +1,8 @@
 const display = document.querySelector(".display");
-let newValue = null;
-let x = null;
-let y = null;
+let oldValue = "";
+let newValue = "";
+let x = "";
+let y = "";
 let operator = null;
 
 const add = function (x, y) {
@@ -25,16 +26,17 @@ function operate(operator, x, y) {
 }
 
 function updateDisplay(value) {
+  oldValue = display.value;
+  newValue = oldValue + value;
   display.value = "";
-  newValue = display.value + value;
   display.value = newValue;
 }
 
 function updateNumbers(n) {
   if (!operator) {
-    x = n;
+    x = x + n;
   } else {
-    y = n;
+    y = y + n;
   }
 }
 
@@ -47,9 +49,10 @@ numArray.forEach((e) => {
 });
 
 document.querySelector("#clr").addEventListener("click", () => {
-  newValue = null;
-  x = null;
-  y = null;
+  newValue = "";
+  oldValue = "";
+  x = "";
+  y = "";
   operator = null;
   display.value = "";
 });
@@ -74,6 +77,6 @@ document.querySelector("#equal").addEventListener("click", () => {
   const result = operate(operator, x, y);
   display.value = result;
   x = result;
-  y = null;
+  y = "";
   operator = null;
 });
