@@ -1,9 +1,8 @@
 const display = document.querySelector(".display");
-let oldValue = "";
-let newValue = "";
 let x = "";
 let y = "";
 let operator = null;
+let currentNumber = "";
 
 const add = function (x, y) {
   return +x + +y;
@@ -26,57 +25,60 @@ function operate(operator, x, y) {
 }
 
 function updateDisplay(value) {
-  oldValue = display.value;
-  newValue = oldValue + value;
-  display.value = "";
-  display.value = newValue;
+  display.value = currentNumber;
 }
 
 function updateNumbers(n) {
   if (!operator) {
-    x = x + n;
+    x = n;
   } else {
-    y = y + n;
+    y = n;
   }
+  currentNumber = "";
 }
 
 const numArray = document.querySelectorAll(".num");
 numArray.forEach((e) => {
   e.addEventListener("click", (e) => {
-    updateDisplay(e.target.innerText);
-    updateNumbers(e.target.innerText);
+    currentNumber = currentNumber + e.target.innerText;
+    updateDisplay(currentNumber);
   });
 });
 
 document.querySelector("#clr").addEventListener("click", () => {
-  newValue = "";
-  oldValue = "";
   x = "";
   y = "";
   operator = null;
   display.value = "";
+  currentNumber = "";
 });
 
 document.querySelector("#sum").addEventListener("click", (e) => {
+  updateNumbers(currentNumber);
   operator = add;
 });
 
 document.querySelector("#sub").addEventListener("click", (e) => {
+  updateNumbers(currentNumber);
   operator = sub;
 });
 
 document.querySelector("#mul").addEventListener("click", (e) => {
+  updateNumbers(currentNumber);
   operator = mul;
 });
 
 document.querySelector("#div").addEventListener("click", (e) => {
+  updateNumbers(currentNumber);
   operator = div;
 });
 
 document.querySelector("#equal").addEventListener("click", () => {
+  updateNumbers(currentNumber);
   const result = operate(operator, x, y);
-  display.value = result;
-  x = result;
+  currentNumber = result;
+  updateDisplay(result);
+  x = "";
   y = "";
   operator = null;
 });
