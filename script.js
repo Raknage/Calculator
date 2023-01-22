@@ -3,6 +3,7 @@ let x = "";
 let y = "";
 let operator = null;
 let currentNumber = "";
+let calc = false;
 
 function add(x, y) {
   return +x + +y;
@@ -25,7 +26,7 @@ function operate(operator, x, y) {
 }
 
 function updateDisplay(value) {
-  display.value = currentNumber;
+  display.value = value;
 }
 
 function updateNumbers(n) {
@@ -56,29 +57,37 @@ document.querySelector("#clr").addEventListener("click", () => {
 document.querySelector("#sum").addEventListener("click", (e) => {
   updateNumbers(currentNumber);
   operator = add;
+  equal();
 });
 
 document.querySelector("#sub").addEventListener("click", (e) => {
   updateNumbers(currentNumber);
   operator = sub;
+  equal();
 });
 
 document.querySelector("#mul").addEventListener("click", (e) => {
   updateNumbers(currentNumber);
   operator = mul;
+  equal();
 });
 
 document.querySelector("#div").addEventListener("click", (e) => {
   updateNumbers(currentNumber);
   operator = div;
+  equal();
 });
 
 document.querySelector("#equal").addEventListener("click", () => {
   updateNumbers(currentNumber);
-  const result = operate(operator, x, y);
-  currentNumber = result;
-  updateDisplay(result);
-  x = "";
-  y = "";
-  operator = null;
+  equal();
 });
+
+function equal() {
+  if (y) {
+    const result = operate(operator, x, y);
+    updateDisplay(result);
+    x = result;
+    y = "";
+  }
+}
