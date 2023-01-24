@@ -55,33 +55,32 @@ document.querySelector("#clr").addEventListener("click", () => {
 });
 
 document.querySelector("#sum").addEventListener("click", (e) => {
-  updateNumbers(currentNumber);
-  operator = add;
-  equal();
+  operatorEvent(add);
 });
 
 document.querySelector("#sub").addEventListener("click", (e) => {
-  updateNumbers(currentNumber);
-  operator = sub;
-  equal();
+  operatorEvent(sub);
 });
 
 document.querySelector("#mul").addEventListener("click", (e) => {
-  updateNumbers(currentNumber);
-  operator = mul;
-  equal();
+  operatorEvent(mul);
 });
 
 document.querySelector("#div").addEventListener("click", (e) => {
-  updateNumbers(currentNumber);
-  operator = div;
-  equal();
+  operatorEvent(div);
 });
 
 document.querySelector("#equal").addEventListener("click", () => {
   updateNumbers(currentNumber);
   equal();
 });
+
+function operatorEvent(op) {
+  updateNumbers(currentNumber);
+  equal();
+  operator = op;
+  equal();
+}
 
 function equal() {
   if (y) {
